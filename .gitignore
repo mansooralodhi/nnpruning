@@ -1,0 +1,8 @@
+.idea/*
+__pycache__/
+checkpoints/
+data/
+src/mnist/sessions/
+bin/
+my_package.egg-info/
+*.egg-info/

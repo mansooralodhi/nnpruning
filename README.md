@@ -3,7 +3,6 @@
 ## Table of Contents
 - [Prerequisite](#prerequisite)
 - [Iterative Pruning](#iterative-pruning)
-- [Test Pruning](#test-pruning)
 - [Deployment](#deployment)
 
 ### Prerequisite
@@ -30,7 +29,7 @@
   </div>
 
 ### Iterative Pruning  
-  - [ ] Locate `__name__=='__main__' in the file `src/iterativeprune.py`
+  - [ ] Locate `__name__=='__main__' in the file ```src/iterativeprune.py```
   - [ ] Define the neural network model
         <br> `model = SimpleNN()`
   - [ ] Generate pruning data that results in file `src/mnist/retain/retain.txt`
@@ -80,8 +79,7 @@
       </tr>
     </table>
   </div>
-
-### Test Pruning  
+  
   - [ ] Given the loss and accuracy graphs, copy the model path
         <br> ```src/mnist/sessions/2025-04-21/iterative_pruning/8/prune_w_retrain/best_model.pth```
   - [ ] Locate ```if __name__=='__main__'``` in the file ```src/validator.py```
@@ -91,7 +89,7 @@
         <br> ```load_pruned_model(model, pruned_model_file)```
   - [ ] Define the model and paste the model file here to evaluate the pruned model on test data using
         <br> ```evaluate(model, train_loader, test_loader)```
-  - [ ] Use the above model file together with ```load_pruned_model()``` function for runtime execution and deployment. 
+  - [ ] Validate if the above results are same as those shown in graph. 
 
 ### Deployment
   - [ ]  Copy the pruned model file
@@ -99,7 +97,7 @@
   - [ ]  Copy the neural network model file:
         <br> ```src/mnist/model.py```
   - [ ]  Copy the model loader file
-        <br> ```src/io```
+        <br> ```src/io.py```
   - [ ]  Execute the model in 3 steps below
       -  ```model = SimpleNN()```
       -  ```load_pruned_model(model, pruned_model_file)```

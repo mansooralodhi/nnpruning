@@ -18,20 +18,20 @@ The project aims to structurally prune a fully-connected neural network using in
   - [ ] Define datasets and dataloaders in the file `src/mnist/dataloaders.py`
   - [ ] Download data in the directory `src/mnist/data/`
   - [ ] Define neural network model in the file `src/mnist/model.py`
-  - [ ] Generate nodes retention data from the file `src/mnist/retain.py`
-      - [ ] Define initial number of nodes in each hidden layer as
+  - [ ] Generate neurons retention data from the file `src/mnist/retain.py`
+      - [ ] Define initial number of neurons in each hidden layer as
             <br> ```self.h1, self.h2 = 256, 64 ```
       - [ ] Define maximum number of iteration
             <br> ```self.iterations = list(range(0,31))```
-      - [ ] Add respect hidden nodes headers in ```self.headers```
-      - [ ] Define number of nodes retain in each layer every iteration
+      - [ ] Add respective hidden neurons headers in ```self.headers```
+      - [ ] Define the number of neurons to retain in each layer every iteration
             <br> ```t1 = round(self.h1 * (self.q) ** t) ```
             <br> ```N1 = t1 if t1 > 1 else 1 ```
-      - [ ] Add number of nodes retained in each hidden layer to
+      - [ ] Add the number of neurons retained in each hidden layer to
             <br>```per = (N1 + N2) / (self.h1+self.h2) * 100 ```
-      - [ ] Append number of nodes retained in each hiiden layer to
+      - [ ] Append the number of neurons retained in each hiiden layer to
             <br>```self.data.append([t, N1, N2, per])```
-      - [ ] To plot the nodes decay function, adjust functions ```plot_data_iterations()``` and ```plot_data_distribution()``` 
+      - [ ] To plot the neurons decay function, adjust functions ```plot_data_iterations()``` and ```plot_data_distribution()``` 
   - [ ] Ensure the generated direcotry `src/mnist/retain/` has the files
       - [ ] `retain.txt`
       - [ ] `pruneNodesIteration.png`

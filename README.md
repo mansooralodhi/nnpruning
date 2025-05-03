@@ -6,7 +6,12 @@
 - [Model Deployment](#model-deployment)
 
 ### Introduction
-The project aims to structurally prune a fully-connected neural network using interval-adjoint sensitivity information by removing entire neurons layerwise while mainting at least single neuron in each layer.   
+The project aims to structurally prune a fully-connected neural network using interval-adjoint sensitivity information. Each iteration compute the significance of each neuron, removes a fraction of least significant neurons in each layer. and later retrain the model. Pruning continues unless the stopping criteria is met. Later, a pruned model, with suitable trade-off between complexity and efficiency, is selected for deployment.
+
+[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![Torchvision](https://img.shields.io/badge/Torchvision-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/vision/)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?logo=matplotlib&logoColor=white)](https://matplotlib.org/)
+[![thop](https://img.shields.io/badge/thop-3776AB?logo=python&logoColor=white)](https://pypi.org/project/thop/)
 
 ### Prerequisite
   - [ ] Generate (any) problem directiory, `src/mnist/`, for mnist data classification.

@@ -69,11 +69,11 @@
   <div align="center">
     <table>
       <tr>
-        <td align="center"><img src="src/mnist/retain/pruneNodesDistribution.png" width="300"/><br>
-            <div align="center"> <sub>pruneNodesDistribution.png</sub> </div> 
+        <td align="center"><img src="src/mnist/sessions/2025-04-21/iterative_pruning/prune_w_retrain_results/accuracies.png" width="300"/><br>
+            <div align="center"> <sub>accuracies.png</sub> </div> 
         </td>
-        <td><img src="src/mnist/retain/pruneNodesIteration.png" width="300"/><br> 
-            <div align="center"> <sub>pruneNodesIteration.png</sub> </div> 
+        <td><img src="src/mnist/sessions/2025-04-21/iterative_pruning/prune_w_retrain_results/losses.png" width="300"/><br> 
+            <div align="center"> <sub>losses.png</sub> </div> 
         </td>
       </tr>
     </table>

@@ -18,7 +18,8 @@ The repository is part of the master's thesis, 'Interval-Adjoint Sensitivity Gui
   - [ ] Define datasets and dataloaders in the file `src/mnist/dataloaders.py`
   - [ ] Download data in the directory `src/mnist/data/`
   - [ ] Define neural network model in the file `src/mnist/model.py`
-  - [ ] Generate neurons retention data from the file `src/mnist/retain.py`
+  - [x] To do: Add the hyperparameters of neuron-decay function in .yaml file 
+  - [x] [Temporary] Generate neurons retention data from the file `src/mnist/retain.py`
       - [ ] Define initial number of neurons in each hidden layer as
             <br> ```self.h1, self.h2 = 256, 64 ```
       - [ ] Define maximum number of iteration
@@ -83,7 +84,7 @@ The repository is part of the master's thesis, 'Interval-Adjoint Sensitivity Gui
         |   |     └── train_results.txt
         |   |     └── validation_results.txt
         </pre>
-  - [ ] Once iterations halt, execute the file ```src/concatenate.py``` to generate
+  - [x] Once iterations halt, execute the file ```src/concatenate.py``` to generate
       - ```mnist/sessions/2025-04-21/iterative_pruning/prune_w_retrain_results/```
           - ```validations.txt```
           - ```accuracies.png```

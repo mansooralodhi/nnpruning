@@ -6,7 +6,7 @@
 - [Model Deployment](#model-deployment)
 
 ### Introduction
-The repository is part of the master's thesis, 'Interval-Adjoint Sensitivity Guided Neural Network Pruning'. The project aims to structurally prune a fully-connected neural network using interval-adjoint sensitivity information. Each iteration compute the significance of each neuron, removes a fraction of least significant neurons in each layer. and later retrain the model. Pruning continues unless the stopping criteria is met. Later, a pruned model, with suitable trade-off between complexity and efficiency, is selected for deployment.
+The repository is part of the master's thesis, 'Interval-Adjoint Sensitivity Guided Neural Network Pruning'. The project aims to structurally prune a fully-connected multilayer perceptron using interval-adjoint sensitivity information. Each iteration compute the significance of each neuron, removes a fraction of least significant neurons in each layer. and later retrain the model. Pruning continues unless the stopping criteria is met. Later, a pruned model, with suitable trade-off between complexity and efficiency, is selected for deployment.
 
 [![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Torchvision](https://img.shields.io/badge/Torchvision-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/vision/)

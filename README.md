@@ -2,8 +2,8 @@
 
 ## Table of Contents
 - [Prerequisite](#prerequisite)
-- [Iterative Pruning](#iterative-pruning)
-- [Deployment](#deployment)
+- [Perform Iterative Pruning](#perform-iterative-pruning)
+- [Model Deployment](#model-deployment)
 
 ### Prerequisite
   - [ ] Generate (any) problem directiory, `src/mnist/`, for mnist data classification.
@@ -28,7 +28,7 @@
     </table>
   </div>
 
-### Iterative Pruning  
+### Perform Iterative Pruning  
   - [ ] Locate `__name__=='__main__' in the file ```src/iterativeprune.py```
   - [ ] Define the neural network model
         <br> `model = SimpleNN()`
@@ -91,7 +91,7 @@
         <br> ```evaluate(model, train_loader, test_loader)```
   - [ ] Validate if the above results are same as those shown in graph. 
 
-### Deployment
+### Model Deployment
   - [ ]  Copy the pruned model file
         <br> ```src/mnist/sessions/2025-04-21/iterative_pruning/8/prune_w_retrain/best_model.pth```
   - [ ]  Copy the neural network model file:

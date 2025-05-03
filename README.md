@@ -26,7 +26,38 @@
   </details> 
 
 <details open>
-<summary> Perform Iterative Pruning </summary>
+<summary> <ins> Perform Iterative Pruning </ins> </summary>
+  
+  - [ ] Locate `__name__=='__main__' in the file `src/iterativeprune.py`
+  - [ ] Define the neural network model
+        <br> `model = SimpleNN()`
+  - [ ] Generate pruning data that results in file `src/mnist/retain/retain.txt`
+        <br> `data = GeneratePruneData().generate_data()`
+  - [ ] Initialze the iterative pruning with relevant arugments
+        <br> `experiment = IterativePruning(train_loader, test_loader, train, evaluate)`
+  - [ ] Define the directory to store experiment results
+        <br> `my_dir = Path('mnist/sessions/2025-04-21/iterative_pruning/')`
+  - [ ] Define the `begin_itr` variable
+      - [ ] 0: start from scratch
+      - [ ] ¬ 0 : start from given pruning iteration
+  - [ ] Iterative pruning with retraining results in the directory structure.
+        <pre> 
+        mnist/sessions/2025-04-21/iterative_pruning/
+        ├── 0/
+        |   ├── prune_w_retrain/
+        |   |    └── best_model.pth
+        |   |    └── train_results.txt
+        ├── 1/
+        |   ├── prune_w_retrain/
+        |   |    └── best_model.pth
+        |   |    └── train_results.txt
+        |   |    └── validation_results.txt
+        ├── ***i***/
+        |   ├── prune_w_retrain/
+        |   |     └── best_model.pth
+        |   |     └── train_results.txt
+        |   |     └── validation_results.txt
+        </pre>  
 </details>
 
 <details open>

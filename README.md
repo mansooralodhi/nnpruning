@@ -85,7 +85,12 @@
   
   - [ ] Given the loss and accuracy graphs, copy the model path
         <br> ```src/mnist/sessions/2025-04-21/iterative_pruning/8/prune_w_retrain/best_model.pth```
-  - [ ]  Locate ```if __name__=='__main__'``` in the file ```src/validator.py```
-  - [ ]  Define the model and paste the model file here to evaluate the pruned model on test data using
+  - [ ] Locate ```if __name__=='__main__'``` in the file ```src/validator.py```
+  - [ ] Define the model
+        <br> ```model = SimpleNN()```
+  - [ ] Load pruned model
+        <br> ```load_pruned_model(pruned_model_file)```
+  - [ ] Define the model and paste the model file here to evaluate the pruned model on test data using
         <br> ```evaluate(model, train_loader, test_loader)```
+  - [ ] Use the above model file together with ```load_pruned_model()``` function for runtime execution and deployment. 
 </details>

@@ -21,9 +21,38 @@ class NNLayerProtocol(Protocol):
     @abstractmethod
     def backward(self, input_adjoint: TensorOrInterval): ...
 
+class Sigmoid(NNLayerProtocol):
+    
+    @property
+    def grad(self):
+        return False
+    
+    def __init__(self, name: str = ''):
+        self.primal = None
+        self.name = name
+    
+    def forward(self, x):
+        self.primal =  Interval.sigmoid(x)
+        return self.primal
+    
+    def backward(self, input_adjoint):
+        
+        derivative = lambda x: x * (1 - x)
+        
+        if not isinstance(self.primal, Interval):
+            return input_adjoint * derivative(self.primal)
+        
+        d_lower = derivative(self.primal.lower)
+        d_upper = derivative(self.primal.upper)
+        # Handle non-monotonic case (0 ∈ [lb, ub])
+        # if (self.primal.lower < 0).any() and (self.primal.upper > 0).any():
+        d_max = torch.tensor(0.25)  # Global max of σ'
+        d_lower = torch.minimum(d_lower, d_max)
+        d_upper = torch.maximum(d_upper, d_max)
+        return input_adjoint * Interval(d_lower, d_upper)
 
 class Relu(NNLayerProtocol):
-    
+
     @property
     def grad(self):
         return False
@@ -67,7 +96,7 @@ class FCLayer(NNLayerProtocol):
             self.primal += self.bias
         return self.primal
 
-    def backward(self, input_adjoint, ):
+    def backward(self, input_adjoint):
         self.adjoint = input_adjoint
         return input_adjoint @ self.weight.T
 

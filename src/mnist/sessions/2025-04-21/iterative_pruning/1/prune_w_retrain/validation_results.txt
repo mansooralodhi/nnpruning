@@ -1,0 +1,2 @@
+Train_Loss Test_Loss Train_Accuracy Test_Accuracy PercentageRetain
+0.021954 0.0851788 99.5167 97.61 80

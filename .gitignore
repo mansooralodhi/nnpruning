@@ -2,7 +2,11 @@
 __pycache__/
 checkpoints/
 data/
-src/mnist/sessions/
 bin/
 my_package.egg-info/
 *.egg-info/
+*.pyc
+*.pyo   
+*.pth
+events.out.tfevents.*
+.ipynb_checkpoints/

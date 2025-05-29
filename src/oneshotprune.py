@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Sequence
 from src.ad import AD  
 from src.interval import Interval
-from src.nnmodulelike import NNModuleLike
+from src.nnModuleLike import NNModuleLike
 from src.prune import prune_nodes_layerwise
 from src.map import nnModule_to_nnModuleLike, nnModuleLike_to_nnModule
 

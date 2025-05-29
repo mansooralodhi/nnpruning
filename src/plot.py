@@ -85,9 +85,9 @@ class PlotPruneIterations:
         plt.plot(x, yTrain, marker='.', linestyle='--', label='Train Loss', color='#000000')
         plt.plot(x, yTest, marker='.', linestyle='--', label='Test Loss', color='#8BC34A')
         plt.legend(); plt.minorticks_on(); plt.grid(which='both', linestyle='-', linewidth=0.5)
-        plt.xlabel(f'% of Total Hidden Nodes'); plt.ylabel('Loss'); plt.title('One-Shot Pruning Loss')
+        plt.xlabel(f'% of Total Hidden Nodes'); plt.ylabel('Loss'); plt.title('Iterative Pruning Loss')
         plt.gca().invert_xaxis()
-        plt.savefig(fname = 'src/mnist/sessions/2025-04-21/one_shot_pruning/_results/loss.png', dpi=300)
+        plt.savefig(fname = 'src/mnist/sessions/2025-04-21/iterative_pruning/prune_w_retrain_results/loss.png', dpi=300)
         plt.show(); plt.plot()
 
     def plot_accuracy(columns: Sequence[str], data: Dict[str, List]):
@@ -103,9 +103,9 @@ class PlotPruneIterations:
         plt.plot(x, yTrain, marker='.', linestyle='--', label='Train Accuracy', color='#000000')
         plt.plot(x, yTest, marker='.', linestyle='--', label='Test Accuracy', color='#E60000')
         plt.legend(); plt.minorticks_on(); plt.grid(which='both', linestyle='-', linewidth=0.5)
-        plt.xlabel(f'% of Total Hidden Nodes'); plt.ylabel('Accuracy'); plt.title('One-Shot Pruning Accuracy')
+        plt.xlabel(f'% of Total Hidden Nodes'); plt.ylabel('Accuracy'); plt.title('Iterative Pruning Accuracy')
         plt.gca().invert_xaxis()
-        plt.savefig(fname = 'src/mnist/sessions/2025-04-21/one_shot_pruning/_results/accu.png', dpi=300)
+        plt.savefig(fname = 'src/mnist/sessions/2025-04-21/iterative_pruning/prune_w_retrain_results/accu.png', dpi=300)
         plt.show(); plt.plot()
 
         # file = Path(__file__).parent / 'mnist/pruneEffect/itrAccu.png'
@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
     # file = 'src/mnist/sessions/2025-03-23/14-11-23/results_train.txt'
     # PlotMetrices(file).plot(filepostfix='train', xlabel='Epochs')
-    results_file = 'src/mnist/sessions/2025-04-21/one_shot_pruning/_results/validation.txt'
+    results_file = 'src/mnist/sessions/2025-04-21/iterative_pruning/prune_w_retrain_results/validations.txt'
     data = PlotPruneIterations.read_text_file(results_file)
     PlotPruneIterations.plot_accuracy(results_columns, data)
     PlotPruneIterations.plot_loss(results_columns, data)

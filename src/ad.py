@@ -3,7 +3,7 @@ from typing import Sequence
 
 from src.interval import Interval
 from src.map import nnModule_to_nnModuleLike
-from src.nnmodulelike import NNModuleLike, TensorOrInterval
+from src.nnModuleLike import NNModuleLike, TensorOrInterval
 
 class AD:
 
@@ -11,6 +11,8 @@ class AD:
     def forward_pass(cls, x: TensorOrInterval, model: NNModuleLike) -> TensorOrInterval:
         for layer in model: 
             x = layer.forward(x)
+            # print(layer.name)
+            # print(x)
         return x, model
 
     @classmethod
@@ -18,8 +20,17 @@ class AD:
         input_adjoint = torch.full((model[-1].primal.shape), 1.0)
         if isinstance(x, Interval): 
             input_adjoint = Interval(input_adjoint, input_adjoint)
+            print('output adjoint')
+            print(input_adjoint)
         for i in reversed(range(len(model))): 
+            if not model[i].grad:
+                print(model[i].name)
+                print(input_adjoint)
             input_adjoint = model[i].backward(input_adjoint)
+            if model[i].grad:
+                print(model[i].name)
+                print(model[i].adjoint)
+            
         return input_adjoint, model
    
     @classmethod

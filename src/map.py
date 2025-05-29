@@ -2,12 +2,13 @@ import copy
 import torch
 import torch.nn as nn
 import torch.nn.modules.activation as activation
-from src.nnmodulelike import FCLayer, Relu, NNModuleLike
+from src.nnModuleLike import FCLayer, Relu, Sigmoid, NNModuleLike
 
 activation_functions = tuple(cls for cls in activation.__dict__.values() if isinstance(cls, type))
 
 mapping = { nn.modules.linear.Linear: FCLayer, 
-            nn.modules.activation.ReLU: Relu}
+            nn.modules.activation.ReLU: Relu,
+            nn.modules.activation.Sigmoid: Sigmoid}
     
 def nnModule_to_nnModuleLike(model: nn.Module) -> NNModuleLike:
     layers = list()

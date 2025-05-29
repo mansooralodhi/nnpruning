@@ -18,7 +18,12 @@ def prune_nodes_layerwise(layers: NNModuleLike, retainLayersNodes: Sequence[int]
                 layers[l].weight = torch.index_select(layers[l].weight, 0, keep_indices)
             if l == out_layer:
                 break
-            sig = (layers[l].primal.width * layers[l].adjoint.upper)
+            # old:
+            # sig = (layers[l].primal.width * layers[l].adjoint.upper)
+            # new:
+            # TODO: take absolute of lower and upper bound and select the max
+            sig = (layers[l].primal.width * abs(layers[l].adjoint).upper)
+            
             keep_indices = torch.topk(sig, retainLayersNodes[i], largest=True)[1]
             keep_indices = keep_indices.flatten()
             layers[l].bias = torch.index_select(layers[l].bias, 0, keep_indices)

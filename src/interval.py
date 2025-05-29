@@ -38,7 +38,19 @@ class Interval:
         lb = left_operand + self.lower
         ub = left_operand + self.upper
         return Interval(lb, ub)
-    
+
+    def __sub__(self, right_operand: Union[torch.Tensor, 'Interval']):
+        if right_operand.__class__ != Interval:
+            lb = self.lower - right_operand
+            ub = self.upper - right_operand
+            return Interval(lb, ub)
+        lb = self.lower - right_operand.upper
+        ub = self.upper - right_operand.lower
+        return Interval(lb, ub)
+
+    def __rsub__(self, left_operand: Union[torch.Tensor, int, float]):
+        return Interval(left_operand, left_operand) - self
+        
     def __mul__(self, right_operand: Union['Interval', torch.Tensor, int, float]):
         if right_operand.__class__ != Interval:
             p1 = self.lower * right_operand
@@ -109,6 +121,11 @@ class Interval:
         ub = (self.upper < right_operand.upper).float()
         return Interval(lb, ub)
     
+    def __abs__(self):
+        lb = torch.abs(self.lower)
+        ub = torch.abs(self.upper)
+        return Interval(torch.minimum(lb, ub), torch.maximum(lb, ub))
+    
     @property
     def shape(self):
         return self.lower.shape
@@ -116,6 +133,7 @@ class Interval:
     @property
     def T(self):
         return Interval(self.lower.T, self.upper.T)
+    
     
     @property
     def width(self):
@@ -125,21 +143,31 @@ class Interval:
     def positive_and_negative_parts(x):
         return torch.maximum(torch.tensor(0), x), torch.minimum(torch.tensor(0), x)
     
-
+    @staticmethod
+    def sigmoid(x):
+        if x.__class__ != Interval:
+            return torch.sigmoid(x)
+        return Interval(torch.sigmoid(x.lower), torch.sigmoid(x.upper))
+    
 if __name__ == '__main__':
     
-    import numpy as np
-    x = Interval(np.array([2, 3]), np.array([5, 7]))
-    y = Interval(np.array([11, 13]), np.array([17, 19]))
-    z = Interval(61, 218)
+    x = 2 * torch.rand(10, 2) - 1
+    y = x - 0.2
+    ival = Interval(y, x)
+    print(ival)
+    if (ival.lower < 0).any() and (ival.upper > 0).any():
+        print("Contains zero") 
+    # x = Interval(np.array([2, 3]), np.array([5, 7]))
+    # y = Interval(np.array([11, 13]), np.array([17, 19]))
+    # z = Interval(61, 218)
     
-    x = Interval(torch.randn((1, 2)), torch.randn((1, 2)))
-    w1 = torch.randn((2, 5))
-    a1 = x @ w1 
-    w2 = torch.randn((5, 3))
-    a2 = a1 @ w2
-    w3 = torch.randn((3, 1))
-    y = a2 @ w3 
+    # x = Interval(torch.randn((1, 2)), torch.randn((1, 2)))
+    # w1 = torch.randn((2, 5))
+    # a1 = x @ w1 
+    # w2 = torch.randn((5, 3))
+    # a2 = a1 @ w2
+    # w3 = torch.randn((3, 1))
+    # y = a2 @ w3 
 
     # x1 = Interval(torch.randn((1, 2)), torch.randn((1, 2)))
     # x2 = Interval(torch.randn((2, 3)), torch.randn((2, 3)))

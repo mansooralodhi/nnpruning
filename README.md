@@ -92,10 +92,10 @@ The repository is part of the master's thesis, 'Interval-Adjoint Sensitivity Gui
   <div align="center">
     <table>
       <tr>
-        <td align="center"><img src="src/mnist/sessions/2025-04-21/iterative_pruning/prune_w_retrain_results/accuracies.png" width="300"/><br>
+        <td align="center"><img src="src/mnist/sessions/2025-04-21/iterative_pruning/prune_w_retrain_results/accu.png" width="300"/><br>
             <div align="center"> <sub>accuracies.png</sub> </div> 
         </td>
-        <td><img src="src/mnist/sessions/2025-04-21/iterative_pruning/prune_w_retrain_results/losses.png" width="300"/><br> 
+        <td><img src="src/mnist/sessions/2025-04-21/iterative_pruning/prune_w_retrain_results/loss.png" width="300"/><br> 
             <div align="center"> <sub>losses.png</sub> </div> 
         </td>
       </tr>

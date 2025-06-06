@@ -121,10 +121,6 @@ class Interval:
         ub = (self.upper < right_operand.upper).float()
         return Interval(lb, ub)
     
-    def __abs__(self):
-        lb = torch.abs(self.lower)
-        ub = torch.abs(self.upper)
-        return Interval(torch.minimum(lb, ub), torch.maximum(lb, ub))
     
     @property
     def shape(self):
